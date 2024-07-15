@@ -185,9 +185,9 @@ azure-functions==1.20.0 \
     --hash=sha256:1d4ad15b10768b78046154d1da392e99634b64b4821dd091d5b9fe3600c49573 \
     --hash=sha256:437e8889d7a75379159b457589cb74f6f966d3576067ae6649fafcd9058102e1
     # via call-center-ai (pyproject.toml)
-azure-identity==1.17.0 \
-    --hash=sha256:501d6c2cbb07826ff5e7cebc05ef319ba45612f31f0bdadca260005798e4ef16 \
-    --hash=sha256:a1168f223b2d7fa3968362b78affd157a1f3772f310a8cdce883cc515c6c8998
+azure-identity==1.17.1 \
+    --hash=sha256:32ecc67cc73f4bd0595e4f64b1ca65cd05186f4fe6f98ed2ae9f1aa32646efea \
+    --hash=sha256:db8d59c183b680e763722bfe8ebc45930e6c57df510620985939f7f3191e0382
     # via call-center-ai (pyproject.toml)
 azure-monitor-opentelemetry==1.6.0 \
     --hash=sha256:45a4995fffa62fc62dc08c43b28e91c35cdf7e6a46d7f2fdd5197aafb816cc9d \

@@ -15,7 +15,7 @@ dependencies = [
   "azure-cosmos==4.7.0",  # Azure Cosmos DB
   "azure-eventgrid==4.20.0",  # Azure Event Grid
   "azure-functions==1.20.0",  # Azure Functions
-  "azure-identity==1.17.0",  # Azure identity library
+  "azure-identity==1.17.1",  # Azure identity library
   "azure-monitor-opentelemetry==1.6.0",  # Azure Monitor OpenTelemetry
   "azure-search-documents==11.6.0b4",  # Azure AI Search
   "azure-storage-queue==12.10.0",  # Azure Storage Queue
