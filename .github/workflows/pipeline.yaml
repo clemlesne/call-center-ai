@@ -147,7 +147,7 @@ jobs:
         uses: actions/checkout@v4.1.7
 
       - name: Init Syft
-        uses: anchore/sbom-action/download-syft@v0.16.1
+        uses: anchore/sbom-action/download-syft@v0.17.0
 
       - name: Run attestation
         run: make sbom version_full=${{ needs.init.outputs.VERSION_FULL }}
