@@ -14,6 +14,11 @@ on:
       - hotfix/*
       - main
 
+env:
+  # https://github.com/getsops/sops/releases
+  SOPS_VERSION: 3.9.0
+  PYTHON_VERSION: 3.11
+
 jobs:
   init:
     name: Init
@@ -39,6 +44,8 @@ jobs:
   sast-creds:
     name: SAST - Credentials
     runs-on: ubuntu-22.04
+    env:
+      CI: 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
@@ -63,6 +70,8 @@ jobs:
       security-events: write
     container:
       image: returntocorp/semgrep
+    env:
+      CI: 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
@@ -79,12 +88,108 @@ jobs:
         with:
           sarif_file: semgrep.sarif
 
+  static-test:
+    name: Static tests
+    runs-on: ubuntu-22.04
+    env:
+      CI: 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.1
+        with:
+          cache-dependency-path: requirements-dev.txt
+          cache: pip
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install app dependencies
+        run: make install
+
+      - name: Run tests
+        run: make static-test
+
+  unit-test:
+    name: Unit tests
+    runs-on: ubuntu-22.04
+    needs:
+      - init
+    permissions:
+      # Allow to write commit checks
+      checks: write
+      # Allow to write comments on pull requests
+      pull-requests: write
+    env:
+      CI: 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.1
+        with:
+          cache-dependency-path: requirements-dev.txt
+          cache: pip
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup SOPS
+        run: |
+          curl -LO https://github.com/getsops/sops/releases/download/v${{ env.SOPS_VERSION }}/sops-v${{ env.SOPS_VERSION }}.linux.amd64
+          mv sops-v${{ env.SOPS_VERSION }}.linux.amd64 /usr/local/bin/sops
+          chmod +x /usr/local/bin/sops
+          sops --version
+
+      - name: Install app dependencies
+        run: make install
+
+      - name: Decrypt test config
+        run: |
+          echo '${{ secrets.CONFIG_TEST_AGE }}' > configs/key.txt
+          export SOPS_AGE_KEY_FILE=configs/key.txt
+          sops -d configs/test.yaml > config.yaml
+          rm configs/key.txt
+
+      - name: Restore cache for pytest
+        id: cache-primes
+        uses: actions/cache/restore@v4.0.2
+        with:
+          key: pytest-${{ hashFiles('tests/**') }}
+          path: .pytest_cache
+          restore-keys: pytest-
+
+      - name: Run tests
+        run: version_full=${{ needs.init.outputs.VERSION_FULL }} make unit-test
+
+      - name: Save cache for pytest
+        if: always()
+        uses: actions/cache/save@v4.0.2
+        with:
+          key: pytest-${{ hashFiles('tests/**') }}
+          path: .pytest_cache
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4.3.4
+        if: always()
+        with:
+          name: test-results
+          path: test-reports/*
+
+      - name: Publish results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          check_name: Test results
+          files: test-reports/*.xml
+
   create-release:
     name: Create release
     needs:
       - init
       - sast-creds
       - sast-semgrep
+      - static-test
+      - unit-test
     permissions:
       # Allow to create releases
       contents: write

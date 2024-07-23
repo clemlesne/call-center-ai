@@ -86,6 +86,10 @@ upgrade:
 	az bicep upgrade
 
 test:
+	@$(MAKE) static-test
+	@$(MAKE) unit-test
+
+static-test:
 	@echo "➡️ Test generic formatter (Black)..."
 	python3 -m black --check .
 
@@ -101,8 +105,10 @@ test:
 	@echo "➡️ Test types (Pyright)..."
 	python3 -m pyright .
 
+unit-test:
 	@echo "➡️ Unit tests (Pytest)..."
 	PUBLIC_DOMAIN=dummy pytest \
+		--html=test-reports/$(version_full).html \
 		--junit-xml=test-reports/$(version_full).xml \
 		tests/*.py
 
