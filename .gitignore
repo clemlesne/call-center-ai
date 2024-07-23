@@ -739,9 +739,6 @@ FodyWeavers.xsd
 # Local dev DB
 *.sqlite*
 
-# Local app config file
-config*.yaml
-
 # Tests default environment
 !tests/.env
 
@@ -756,3 +753,7 @@ sbom-reports/
 
 # Azure dev tunnels local installation
 DevTunnels/
+
+# Config files
+config*.yaml
+configs/key.txt

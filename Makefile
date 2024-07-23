@@ -45,6 +45,12 @@ brew:
 	@echo "➡️ Installing Syft..."
 	brew install syft
 
+	@echo "➡️ Installing SOPS..."
+	brew install sops
+
+	@echo "➡️ Installing age..."
+	brew install age
+
 	@echo "➡️ Installing Twilio CLI..."
 	brew tap twilio/brew && brew install twilio
 
