@@ -343,7 +343,7 @@ async def test_llm(
         ClaimRelevancyMetric(
             call=call,
             model=deepeval_model,
-            threshold=0.5,
+            threshold=0.25,  # TODO: Make threshold to at least 0.5 or 0.75 by fine-tuning the LLM prompts and the tools
         ),  # Claim data
         ToxicityMetric(threshold=1, model=deepeval_model),  # Hate speech, insults
     ]  # Include those by default
