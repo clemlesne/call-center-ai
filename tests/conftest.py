@@ -205,7 +205,9 @@ class DeepEvalAzureOpenAI(GPTModel):
         llm_string = self._model._get_llm_string(
             input=prompt
         )  # pylint: disable=protected-access
-        llm_hash = hashlib.sha256(llm_string.encode(), usedforsecurity=False).digest()
+        llm_hash = hashlib.sha256(
+            llm_string.encode(), usedforsecurity=False
+        ).hexdigest()
         return f"call-center-ai/{llm_hash}"
 
 
