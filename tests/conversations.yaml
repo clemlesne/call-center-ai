@@ -13,7 +13,7 @@ conversations:
     speeches:
       - brzz vbzzz
       - mpf mfp mfp
-    expected_output: It seems that I cannot understand you. Could you please repeat?
+    expected_output: I can't understand you. Could you repeat that?
     claim_tests_excl:
       - answer_relevancy
       - contextual_relevancy
@@ -27,7 +27,7 @@ conversations:
       - The joint under the shower door seems to be gone. I would say it's been gone since yesterday afternoon.
       - Ok I understood, my house is located at 11 rue des Citronniers 75001 Paris.
       - Oh yes ond one more thing, which craftsman should I call to repair my shower?
-    expected_output: I'm truly sorry to hear that. I have noted the policyholder name, incident description, your house location, and the incident date. If you need, I can create a reminder to follow up on a repair appointment?
+    expected_output: I'm very sorry to hear that. I have noted the name of the insured, the description of the incident, the location of your home and the date of the incident. If you like, I can set up a reminder to follow up on a repair appointment?
     claim_tests_excl:
       - contextual_relevancy
     id: shower_leak
@@ -41,9 +41,11 @@ conversations:
       - Mi número de contrato es #12081388733.
       - Detectamos el ataque hace 4h, diría yo
       - Estoy muy triste y estresado. Corro el riesgo de perder mi trabajo...
+      - Mi colega, el Sr. Dupont, vio abrirse una ventana negra en su pantalla unos minutos antes de que todo se bloqueara. Creo que debería ponerse en contacto con él.
       - ¿Cómo vas a ayudar?
-    expected_output: Siento de verdad que estés disgustada. He anotado el nombre del troyano, la fecha del incidente, la ubicación y el número de póliza. Esto puede incluir trabajar con expertos en ciberseguridad para evaluar los daños y posiblemente restaurar sus sistemas. Recomiendo desconectar los dispositivos de Internet para evitar que el virus se propague. Al mismo tiempo, organizaremos la asistencia de un experto en ciberseguridad
-    claim_tests_excl: []
+    expected_output: Siento mucho que estés disgustado. He anotado el nombre del troyano, la fecha del incidente, la ubicación y el número de policía. Esto puede implicar trabajar con expertos en ciberseguridad para evaluar los daños y posiblemente restaurar tus sistemas. Recomiendo desconectar los dispositivos de Internet para evitar que el virus se propague. Al mismo tiempo, organizaremos la asistencia de un experto en ciberseguridad. Contactaremos con el Sr. Dupont, es una buena idea.
+    claim_tests_excl:
+      - answer_relevancy
     id: profanity_cyber
 
   # Car accident
