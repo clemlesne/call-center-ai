@@ -76,6 +76,9 @@ class ClaimRelevancyMetric(BaseMetric):
                 for key, value in extracts.items()
             ]
         )
+        scores += [1] * (
+            len(self.call.claim) - len(extracts)
+        )  # Fill missing claims with 1, assuming they are correct
         logger.info("Claim scores: %s", scores)
         # Score is the average
         self.score = sum(scores) / len(scores) if len(extracts) > 0 else 1
