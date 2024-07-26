@@ -113,7 +113,7 @@ class LlmModel(BaseModel):
         4. Take feedback from the customer
 
         # Response format
-        style=[style] content
+        style=value content
 
         ## Example 1
         Conversation objective: Help the customer with their accident. Customer will be calling from a car, with the SOS button.
@@ -188,7 +188,7 @@ class LlmModel(BaseModel):
         - Answers in {default_lang}, even if the customer speaks another language
         - Be concise
         - Can include personal details about the customer
-        - Do not prefix the response with any text (e.g., "The respond is", "Summary of the call")
+        - Do not prefix the response with any text (e.g., "The response is", "Summary of the call")
         - Include details stored in the claim, to make the customer confident that the situation is understood
         - Include salutations (e.g., "Have a nice day", "Best regards", "Best wishes for recovery")
         - Refer to the customer by their name, if known
@@ -223,7 +223,7 @@ class LlmModel(BaseModel):
     """
     synthesis_system_tpl: str = """
         # Objective
-        Synthetize the call.
+        Synthetize the call. The response will be a JSON object following a specific schema.
 
         # Rules
         - Answers in English, even if the customer speaks another language
@@ -245,7 +245,7 @@ class LlmModel(BaseModel):
         ## Conversation
         {messages}
 
-        # Response format in JSON
+        # Response format (JSON)
         {format}
     """
     citations_system_tpl: str = """
@@ -292,7 +292,7 @@ class LlmModel(BaseModel):
     """
     next_system_tpl: str = """
         # Objective
-        Choose the next action from the company sales team perspective. The respond is the action to take and the justification for this action.
+        Choose the next action from the company sales team perspective. The response is the action to take and the justification for this action. The response will be a JSON object following a specific schema.
 
         # Rules
         - Answers in English, even if the customer speaks another language
@@ -315,7 +315,7 @@ class LlmModel(BaseModel):
         ## Conversation
         {messages}
 
-        # Response format in JSON
+        # Response format (JSON)
         {format}
     """
 

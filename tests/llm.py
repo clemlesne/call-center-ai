@@ -163,14 +163,16 @@ class ClaimRelevancyMetric(BaseMetric):
             Assistant is a data analyst expert with 20 years of experience.
 
             # Context
-            Conversation is coming from a call centre. Today is {datetime.now(self.call.tz()).strftime("%a %d %b %Y, %H:%M (%Z)")}.
+            Conversation is coming from a call center. Today is {datetime.now(self.call.tz()).strftime("%a %d %b %Y, %H:%M (%Z)")}.
 
             # Objective
-            Extract fields from a conversation. The respond will be a JSON object with the key-value pairs.
+            Extract fields from a conversation. The response will be a list of objects, in JSON.
 
             # Rules
             - All data should be extracted
+            - Answers in English, even if the customer speaks another language
             - Be concise
+            - If conversation is not understandable or not relevant, respond an empty list
             - Limit fields to the ones listed
             - Only add info which are explicitly mentioned
             - Respond only with the JSON object, nothing else
@@ -181,13 +183,8 @@ class ClaimRelevancyMetric(BaseMetric):
             # Conversation
             {conversation}
 
-            # Response format in JSON
-            [
-                {{
-                    "key": "[key]",
-                    "value": "[value]"
-                }}
-            ]
+            # Response format (JSON)
+            [{{ "key": "key", "value": "value" }}, ...]
 
             ## Example 1
             Conversation: I am 25 years old and I was born in 1996.
