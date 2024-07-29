@@ -829,9 +829,9 @@ langchain==0.2.7 \
     #   deepeval
     #   langchain-community
     #   ragas
-langchain-community==0.2.7 \
-    --hash=sha256:c236e74249ab68a318c94c95327cbe75a76489b61f7bf93f14117d9233ce70b1 \
-    --hash=sha256:f52659dbb8a8f0c011cc7d634247686d11d768843cc3e5fe9e6f52321cde82c0
+langchain-community==0.2.9 \
+    --hash=sha256:1e7c180232916cbe35fe00509680dd1f805e32d7c87b5e80b3a9ec8754ecae37 \
+    --hash=sha256:b51d3adf9346a1161c1098917585b9e303cf24e2f5c71f5d232a0504edada5f2
     # via ragas
 langchain-core==0.2.16 \
     --hash=sha256:68dd6fbdd8d704e124ee14c39d0b0dcf38a47bb32234328b63ad2e98385b1c80 \
