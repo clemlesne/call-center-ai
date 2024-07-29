@@ -39,7 +39,7 @@ dependencies = [
   "pytz==2024.1",  # Time zone handling
   "pyyaml==6.0.1",  # YAML parser
   "redis==5.0.6",  # Redis client
-  "tenacity==8.2.3",  # Async retrying library
+  "tenacity==9.0.0",  # Async retrying library
   "tiktoken==0.7.0",  # Tokenization library for OpenAI models
   "twilio==9.2.1",  # Twilio SDK, used for SMS
   "typing-extensions==4.12.2",  # Typing extensions for Python 3.6+
