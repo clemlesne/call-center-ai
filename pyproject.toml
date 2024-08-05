@@ -32,7 +32,7 @@ dependencies = [
   "opentelemetry-semantic-conventions==0.46b0",  # OpenTelemetry conventions, to standardize telemetry data
   "phonenumbers==8.13.39",  # Phone number parsing and formatting, used with Pydantic
   "pydantic-extra-types==2.8.2",  # Extra types for Pydantic
-  "pydantic-settings==2.3.3",  # Application configuration management with Pydantic
+  "pydantic-settings==2.4.0",  # Application configuration management with Pydantic
   "pydantic[email]==2.7.4",  # Data serialization and validation, plus email validation
   "pyjwt==2.8.0",  # Secure inbound calls from Communication Services
   "python-dotenv==1.0.1",  # Load environment variables from .env file

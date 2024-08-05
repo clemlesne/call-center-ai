@@ -1688,9 +1688,9 @@ pydantic-extra-types==2.8.2 \
     --hash=sha256:4d2b3c52c1e2e4dfa31bf1d5a37b841b09e3c5a08ec2bffca0e07fc2ad7d5c4a \
     --hash=sha256:f2400b3c3553fb7fa09a131967b4edf2d53f01ad9fa89d158784653f2e5c13d1
     # via call-center-ai (pyproject.toml)
-pydantic-settings==2.3.3 \
-    --hash=sha256:87fda838b64b5039b970cd47c3e8a1ee460ce136278ff672980af21516f6e6ce \
-    --hash=sha256:e4ed62ad851670975ec11285141db888fd24947f9440bd4380d7d8788d4965de
+pydantic-settings==2.4.0 \
+    --hash=sha256:bb6849dc067f1687574c12a639e231f3a6feeed0a12d710c1382045c5db1c315 \
+    --hash=sha256:ed81c3a0f46392b4d7c0a565c05884e6e54b3456e6f0fe4d8814981172dc9a88
     # via call-center-ai (pyproject.toml)
 pygments==2.18.0 \
     --hash=sha256:786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199 \
