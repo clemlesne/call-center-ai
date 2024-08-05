@@ -49,7 +49,7 @@ jobs:
           submodules: recursive
 
       - name: Run tests
-        uses: trufflesecurity/trufflehog@v3.78.1
+        uses: trufflesecurity/trufflehog@v3.81.5
         with:
           base: ${{ github.event.repository.default_branch }}
           extra_args: --only-verified
