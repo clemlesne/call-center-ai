@@ -48,7 +48,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "black[jupyter]==24.4.2",  # Code formatter
-  "deepeval==0.21.59",  # LLM model evaluation
+  "deepeval==0.21.74",  # LLM model evaluation
   "deptry==0.16.1",  # Dependency tree testing
   "isort==5.13.2",  # Import sorter
   "pip-tools==7.4.1",  # Compile requirements.txt from pyproject.toml
