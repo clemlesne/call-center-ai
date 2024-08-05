@@ -153,7 +153,7 @@ jobs:
         run: make sbom version_full=${{ needs.init.outputs.VERSION_FULL }}
 
       - name: Upload results to release
-        uses: actions/upload-artifact@v4.3.4
+        uses: actions/upload-artifact@v4.3.5
         with:
           name: sbom
           path: sbom-reports/*
